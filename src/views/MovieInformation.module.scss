@@ -1,0 +1,50 @@
+@use '../styles/colors';
+
+.movieInfoWrapper {
+  padding: 2rem;
+
+  background: colors.get(background-color);
+  color: colors.get(text, light)
+}
+
+.header {
+  display: flex;
+  height: 8rem;
+}
+
+.title {
+  // position: relative;
+  // display: block;
+
+  font-size: 2rem;
+  line-height: 1rem;
+}
+
+.cursoryInfo {
+  font-size: 1rem;
+  line-height: 0.8rem;
+}
+
+.imDbRatingWrapper {
+  position: absolute;
+  width: 8rem;
+  // height: 100%;
+  float: right;
+
+  border: 1px solid red;
+}
+
+.coverImage {
+  width: 20rem;
+  transform: translate(0,0);
+  left: 0;
+  top: 0;
+
+  position: relative;
+  display: inline-block;
+}
+
+.details {
+  position: relative;
+  display: inline-block;
+}

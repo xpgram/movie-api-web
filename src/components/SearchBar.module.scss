@@ -1,0 +1,52 @@
+@use '../styles/colors';
+
+@mixin hover {
+  $inner: .05rem;
+  $outer: .15rem;
+  $bg-color: colors.get(background-color);
+  $hover-color: colors.get(highlight-faded);
+  $focus-color: colors.get(highlight);
+
+  outline: none;
+  transition: box-shadow .3s ease;
+
+  box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer #0000;
+  &:hover {
+    box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer $hover-color;
+  }
+  &:focus {
+    box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer $focus-color;
+  }
+}
+
+.form {
+
+}
+
+.input {
+  width: 40ch;
+  max-width: 90%;
+  height: 2rem;
+  margin: .25rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+
+  border-radius: .4rem;
+  outline: none;
+
+  font-size: 1.125rem;
+
+  @include hover;
+}
+
+.button {
+  width: 9ch;
+  max-width: 90%;
+  height: 2.25rem;
+  margin: .25rem;
+  border-radius: .4rem;
+
+  font-size: 1.125rem;
+
+  @include hover;
+}

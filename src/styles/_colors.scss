@@ -1,0 +1,30 @@
+
+$palette: (
+  text: (
+    light: #FFF,
+  ),
+  highlight: #0FF,
+  highlight-faded: #0FF6,
+  background-color: #282c34,
+);
+
+/**
+ * Given a list of progressively narrow map-selectors, retrieve a color
+ * or gradient from the palette, or null if selectors couldn't resolve
+ * to one.
+ */
+ @function get($selectors...) {
+  $container: $palette;
+
+  @each $term in $selectors {
+    @if map-has-key($container, $term) {
+      $container: map-get($container, $term);
+    }
+    @else {
+      @warn "unknown color `#{$term}` in `#{$container}` in palette";
+      @return null;
+    }
+  }
+
+  @return $container;
+}

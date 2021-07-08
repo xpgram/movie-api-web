@@ -1,0 +1,40 @@
+@use '../styles/colors';
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: colors.get(background-color);
+  padding-top: 2rem;
+
+  color: #FFF;
+}
+
+.wrapper {
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+  transition: .5s ease;
+}
+
+.catalog {
+  padding: 4rem 0;
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  transition: .5s ease;
+}
+
+.loadingIcon {
+  width: 64px;
+  height: 64px;
+
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50vh;
+  left: 50vw;
+
+  background-color: #F00;
+}

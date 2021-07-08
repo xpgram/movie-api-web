@@ -1,0 +1,19 @@
+@use '../styles/colors';
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: colors.get(background-color);
+
+  color: #FFF;
+}
+
+.wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  text-align: center;
+
+  transition: .5s ease;
+}

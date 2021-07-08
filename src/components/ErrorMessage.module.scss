@@ -1,0 +1,9 @@
+
+.text {
+  color: #F55;
+  font-size: 1.5rem;
+  opacity: 0;
+  
+  transition: opacity .3s ease;
+  opacity: 1;   // TODO Ha. This shouldn't work, even.
+}
