@@ -1,6 +1,7 @@
 @use '../styles/colors';
 
 .movieInfoWrapper {
+  height: 100vh;
   padding: 2rem;
 
   background: colors.get(background-color);
@@ -12,9 +13,13 @@
   height: 8rem;
 }
 
+.titleInfo {
+
+}
+
 .title {
   // position: relative;
-  // display: block;
+  display: block;
 
   font-size: 2rem;
   line-height: 1rem;
@@ -26,12 +31,14 @@
 }
 
 .imDbRatingWrapper {
-  position: absolute;
   width: 8rem;
-  // height: 100%;
-  float: right;
+  text-align: center;
+  font-size: 1.25rem;
+}
 
-  border: 1px solid red;
+.titleDetails {
+  display: flex;
+  font-size: 1.25rem;
 }
 
 .coverImage {
@@ -40,6 +47,8 @@
   left: 0;
   top: 0;
 
+  padding-right: 1rem;
+
   position: relative;
   display: inline-block;
 }
@@ -47,4 +56,22 @@
 .details {
   position: relative;
   display: inline-block;
+}
+
+.genreWrapper {
+  display: flex;
+}
+
+.genre {
+  margin: 0 .5rem;
+  padding: .5rem 1rem;
+  border: .1rem solid white;
+  border-radius: 2rem;
+
+  transition: all .25s ease;
+
+  &:hover {
+    color: #FA6;
+    border-color: #FA6;
+  }
 }

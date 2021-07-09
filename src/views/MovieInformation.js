@@ -38,8 +38,8 @@ export default class MovieInformation extends Component {
 
   requestTitleDetails = async (id) => {
     try {
-      // const response = await fetch(`https://imdb-api.com/en/API/Title/${IMDB_API_KEY}/${id}`);
       const response = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}`);
+      // TODO Get the full plot info.
       const json = await response.json();
       this.handleResults(json);
     } catch(err) {
@@ -83,27 +83,35 @@ export default class MovieInformation extends Component {
 
     return (
       <div className={styles.movieInfoWrapper}>
+
+        {/* Section 1: Title, Category and IMDb Rating. */}
         <div className={styles.header}>
-          <h2 className={styles.title}>{Title}</h2>
-          <div className={styles.cursoryInfo}>{cursoryInfo}</div>
+          <div className={styles.titleInfo}>
+            <h2 className={styles.title}>{Title}</h2>
+            <div className={styles.cursoryInfo}>{cursoryInfo}</div>
+          </div>
           <div className={styles.imDbRatingWrapper}>
             <div className={styles.rating}>{imdbRating}</div>
             <div className={styles.votes}>{imdbVotes}</div>
           </div>
         </div>
 
-        <img src={Poster} alt={Title} className={styles.coverImage} />
-        <div className={styles.details}>
-          <div className={styles.genreWrapper}>
-            {genreList}
-          </div>
-          <p className={styles.directors}>{Director}</p>
-          <p className={styles.writers}>{Writer}</p>
-          <p className={styles.plot}>{Plot}</p>
-          <div className={styles.languageWrapper}>
-            {languageList}
+        {/* Section 2: Poster and details. */}
+        <div className={styles.titleDetails}>
+          <img src={Poster} alt={Title} className={styles.coverImage} />
+          <div className={styles.details}>
+            <div className={styles.genreWrapper}>
+              {genreList}
+            </div>
+            <p className={styles.directors}>{Director}</p>
+            <p className={styles.writers}>{Writer}</p>
+            <p className={styles.plot}>{Plot}</p>
+            <div className={styles.languageWrapper}>
+              {languageList}
+            </div>
           </div>
         </div>
+  
       </div>
     );
   }
