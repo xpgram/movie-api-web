@@ -1,0 +1,42 @@
+@use '../styles/colors';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-shrink: 0;
+
+    width: 4.5rem;
+    height: 4.5rem;
+    text-align: center;
+    line-height: 1.5rem;
+
+    // border: 1px solid white, 1px solid colors.get(primery, dark);
+    box-shadow: 0 0 0 .3rem colors.get(primary, neutral), 0 0 0 .4rem colors.get(text, light);
+    // background-color: colors.get(primary, dark);
+    background-color: #972;
+
+    user-select: none;
+
+    transition: all .3s ease;
+    &:hover {
+        background-color: #B93;
+        box-shadow: (
+            0 0 0 .3rem colors.get(primary, neutral),
+            0 0 0 .4rem colors.get(text, light),
+            inset 0 0 .25rem .15rem #0004,
+        );
+    }
+}
+
+.header {
+    font-size: 1.1rem;
+}
+
+.rating {
+    font-size: 1.6rem;
+}
+
+.votes {
+    font-size: .85rem;
+}

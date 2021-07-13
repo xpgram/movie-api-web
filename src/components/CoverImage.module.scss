@@ -1,0 +1,21 @@
+@use '../styles/colors';
+
+// TODO Why is all this reseting necessary? Where do I globally center images?
+
+.imageWrapper {
+    margin-right: 1rem;
+    padding: 1rem;
+    background-color: colors.get(primary, dark);
+
+    display: flex;
+    align-items: center;
+}
+
+.image {
+    position: relative;
+    width: 20rem;
+    transform: translate(0,0);
+    left: 0;
+
+    border: .08rem solid colors.get(text, light);
+}

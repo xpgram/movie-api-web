@@ -1,77 +1,86 @@
 @use '../styles/colors';
 
 .movieInfoWrapper {
-  height: 100vh;
-  padding: 2rem;
+  min-height: 100vh;
+  padding: 1rem 2rem;
 
   background: colors.get(background-color);
-  color: colors.get(text, light)
+  color: colors.get(text, light);
+  
+  display: flex;
+  justify-content: center;
 }
 
-.header {
+.movieInfoWrapperB {
+  max-width: 150ch;
+}
+
+.heading {
   display: flex;
-  height: 8rem;
+  margin-top: 2rem;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .titleInfo {
-
+  position: relative;
+  margin-left: 1rem;
 }
 
 .title {
-  // position: relative;
   display: block;
 
   font-size: 2rem;
-  line-height: 1rem;
+  line-height: 2.3rem;
+  margin: 0 1rem 1rem 0;
 }
 
 .cursoryInfo {
   font-size: 1rem;
   line-height: 0.8rem;
-}
-
-.imDbRatingWrapper {
-  width: 8rem;
-  text-align: center;
-  font-size: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .titleDetails {
   display: flex;
+  align-items: start;
   font-size: 1.25rem;
-}
-
-.coverImage {
-  width: 20rem;
-  transform: translate(0,0);
-  left: 0;
-  top: 0;
-
-  padding-right: 1rem;
-
-  position: relative;
-  display: inline-block;
 }
 
 .details {
   position: relative;
   display: inline-block;
+  margin-top: 1rem;
+}
+
+.detailsA {
+  padding-right: .5rem;
+  padding-bottom: 1rem;
+  border-bottom: .125rem solid white;
+  border-right: .125rem solid white;
+  $amt: .3rem;
+  box-shadow: $amt $amt $amt 0 #0003;
 }
 
 .genreWrapper {
   display: flex;
+  flex-wrap: wrap;
+  // justify-content: space-between;
+
+  // TODO How do I get this to expand widths only when wrapping?
+  // And not the last wrapped line?
+  // And add spacing between items that only affect wrapping, not the content below?
 }
 
-.genre {
-  margin: 0 .5rem;
-  padding: .5rem 1rem;
-  border: .1rem solid white;
-  border-radius: 2rem;
+.languageWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  transition: all .25s ease;
-
-  &:hover {
-    color: #FA6;
-    border-color: #FA6;
-  }
+.language {
+  // font-size: 1rem;
+  width: fit-content;
+  // padding: .2rem .4rem;
+  margin-right: .7rem;
+  // border: .08rem solid colors.get(text, light);
 }
