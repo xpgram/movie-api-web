@@ -1,6 +1,7 @@
 @use '../styles/colors';
 
 .movieInfoWrapper {
+  box-sizing: border-box;
   min-height: 100vh;
   padding: 1rem 2rem;
 
@@ -12,19 +13,19 @@
 }
 
 .movieInfoWrapperB {
+  width: 95%;
   max-width: 150ch;
 }
 
 .heading {
   display: flex;
-  margin-top: 2rem;
   justify-content: space-between;
   align-items: baseline;
+  // margin: 0 1rem;
 }
 
 .titleInfo {
   position: relative;
-  margin-left: 1rem;
 }
 
 .title {
@@ -43,7 +44,7 @@
 
 .titleDetails {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   font-size: 1.25rem;
 }
 
@@ -51,15 +52,25 @@
   position: relative;
   display: inline-block;
   margin-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+
+  transform-style: preserve-3d;
 }
 
-.detailsA {
-  padding-right: .5rem;
-  padding-bottom: 1rem;
-  border-bottom: .125rem solid white;
-  border-right: .125rem solid white;
-  $amt: .3rem;
-  box-shadow: $amt $amt $amt 0 #0003;
+.details:after {
+  content: '';
+
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  top: 40%;
+
+  transform: translateZ(-1px);
+
+  border-bottom: .125rem solid colors.get(text, light);
+  border-right: .125rem solid colors.get(text, light);
+  box-shadow: .3rem .3rem .3rem 0 #0003;
 }
 
 .genreWrapper {

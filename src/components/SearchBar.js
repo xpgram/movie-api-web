@@ -27,29 +27,42 @@ class SearchBar extends Component {
       return;
     }
 
-    // TODO New search updates address but does not reload page which does not trigger results update.
-    // TODO Redirect does not affect browser history; user can't 'Back' into previous search pages.
     const newRoute = `/search?q=${query}`;
     this.setState({
       redirect: <Redirect push to={newRoute} />
     });
   }
 
+  // TODO Use svg for mag glass instead.
   render() {
     return (
       <form className={styles.form} onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          value={this.state.value}
-          placeholder="What are you looking for?"
-          className={styles.input}
-          onChange={this.handleChange}
-        />
-        <input
-          type="submit"
-          value="Search"
-          className={styles.button}
-        />
+
+        {/* Input Bar */}
+        <div className={styles.focusBorder}>
+          <div className={styles.inputContainer}>
+            <i className={styles.iconSearch} />
+            <input
+              type="text"
+              value={this.state.value}
+              placeholder="What are you looking for?"
+              className={styles.input}
+              onChange={this.handleChange}
+            />
+          </div>
+        </div>
+
+        <span className={styles.spacer} />
+
+        {/* Search Button */}
+        <div className={styles.focusBorder}>
+          <input
+            type="submit"
+            value="Search"
+            className={styles.button}
+          />
+        </div>
+
         {this.state.redirect}
       </form>
     );

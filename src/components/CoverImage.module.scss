@@ -3,12 +3,16 @@
 // TODO Why is all this reseting necessary? Where do I globally center images?
 
 .imageWrapper {
-    margin-right: 1rem;
+    position: relative;
     padding: 1rem;
+    left: -1rem;
+
     background-color: colors.get(primary, dark);
 
     display: flex;
     align-items: center;
+
+    user-select: none;
 }
 
 .image {

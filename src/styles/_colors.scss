@@ -2,15 +2,18 @@
 $palette: (
   text: (
     light: #FFF,
+    dark: #222,
   ),
-  highlight: #0FF,
-  highlight-faded: #0FF6,
+  highlight: (
+    bright: #0FF,
+    faded: #0FF8,
+  ),
   background-color: #282c34,
   primary: (
     light: #323741,
     neutral: #282c34,
     dark: #202329,
-  )
+  ),
 );
 
 /**

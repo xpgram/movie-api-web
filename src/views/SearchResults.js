@@ -1,9 +1,8 @@
 import { Component } from 'react';
+import { Header } from '../components/Header';
 import ErrorMessage from '../components/ErrorMessage';
 import LoadingIcon from '../components/LoadingIcon';
 import { MovieCard } from '../components/MovieCard';
-import LogoText from '../components/LogoText';
-import SearchBar from '../components/SearchBar';
 
 import styles from './SearchResults.module.scss';
 
@@ -128,8 +127,8 @@ export default class SearchResults extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <LogoText />
-          <SearchBar />
+          <Header />
+
           <div className={styles.catalog}>
             <LoadingIcon visible={this.state.loadingIconVisible} />
             {this.state.searchResults}

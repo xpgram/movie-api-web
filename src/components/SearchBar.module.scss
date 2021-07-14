@@ -1,20 +1,23 @@
 @use '../styles/colors';
+@use '../styles/functions' as *;
+
+$transitionTime: .3s;
+$borderRadius: .2rem;
 
 @mixin hover {
-  $inner: .05rem;
-  $outer: .15rem;
+  $inner: .125rem;
+  $outer: .225rem;
   $bg-color: colors.get(background-color);
-  $hover-color: colors.get(highlight-faded);
-  $focus-color: colors.get(highlight);
+  $hover-color: colors.get(highlight, faded);
+  $focus-color: colors.get(highlight, bright);
 
-  outline: none;
-  transition: box-shadow .3s ease;
+  transition: box-shadow $transitionTime ease;
 
-  box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer #0000;
+  box-shadow: 0 0 0 $inner #0000, 0 0 0 $outer #0000;
   &:hover {
     box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer $hover-color;
   }
-  &:focus {
+  &:focus-within {
     box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer $focus-color;
   }
 }
@@ -24,30 +27,80 @@
   width: fit-content;
 }
 
+.spacer {
+  display: inline-block;
+  width: .5rem;
+}
+
+.focusBorder {
+  display: inline-block;
+  border-radius: $borderRadius;
+  // margin: .2rem; 
+  @include hover;
+}
+
+.inputContainer {
+  background-color: colors.get(text, light);
+  padding: 0 .5rem;
+
+  border-radius: .25rem;
+}
+
 .input {
   width: 40ch;
-  max-width: 90%;
   height: 2rem;
-  margin: .25rem;
-  padding-left: .5rem;
-  padding-right: .5rem;
-
-  border-radius: .4rem;
-  outline: none;
-
   font-size: 1.125rem;
 
-  @include hover;
+  border: none;
+  outline: none;
+  
+  &::placeholder {
+    user-select: none;
+  }
 }
 
 .button {
   width: 9ch;
-  max-width: 90%;
-  height: 2.25rem;
-  margin: .25rem;
-  border-radius: .4rem;
-
+  height: 2.1rem;
   font-size: 1.125rem;
 
-  @include hover;
+  border-radius: $borderRadius;
+
+  border: none;
+  outline: none;
+
+  transition: background-color $transitionTime ease;
+  background-color: #DDD;
+  &:hover, &:focus {
+    background-color: #EEE;
+  }
+}
+
+.iconSearch {
+  font-size: 1.8rem;
+  $color: #888;
+
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  box-sizing: content-box;
+  border: 0.1em solid $color;
+  position: relative;
+  border-radius: 0.35em;
+
+  top: .08rem;
+  margin-right: .4rem;
+
+  &:before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      right: -0.25em;
+      bottom: -0.1em;
+      border-width: 0;
+      background: $color;
+      width: 0.35em;
+      height: 0.08em;
+      transform: rotate(45deg);
+  }
 }

@@ -7,6 +7,7 @@ import { CoverImage } from '../components/CoverImage';
 
 import styles from './MovieInformation.module.scss';
 import { UpvoteButtonWidget } from '../components/UpvoteButtonWidget';
+import { Header } from '../components/Header';
 
 // const IMDB_API_KEY = 'k_e6xvn1mw';
 const OMDB_API_KEY = '9a856410';
@@ -92,10 +93,7 @@ export default class MovieInformation extends Component {
       <div className={styles.movieInfoWrapper}>
       <div className={styles.movieInfoWrapperB}>
 
-        <div>
-          <LogoTextSmall />
-          <SearchBar />
-        </div>
+        <Header compact={true} />
 
         {/* Section 1: Title, Category and IMDb Rating. */}
         <div className={styles.heading}>
@@ -114,16 +112,14 @@ export default class MovieInformation extends Component {
           <CoverImage src={Poster} alt={Title} />
           {/* <img src={Poster} alt={Title} className={styles.coverImage} /> */}
           <div className={styles.details}>
-              <div className={styles.genreWrapper}>
-                {genreList}
-              </div>
-              <p className={styles.directors}>{Director}</p>
-            <div className={styles.detailsA}>
-              <p className={styles.writers}>{Writer}</p>
-              <p className={styles.plot}>{Plot}</p>
-              <div className={styles.languageWrapper}>
-                {languageList}
-              </div>
+            <div className={styles.genreWrapper}>
+              {genreList}
+            </div>
+            <p className={styles.directors}>{Director}</p>
+            <p className={styles.writers}>{Writer}</p>
+            <p className={styles.plot}>{Plot}</p>
+            <div className={styles.languageWrapper}>
+              {languageList}
             </div>
           </div>
         </div>
