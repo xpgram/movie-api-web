@@ -1,8 +1,13 @@
 import { Component } from "react";
 import { Redirect, withRouter } from "react-router";
+
+import { ICross, IMagnifyingGlass } from "./Icons";
+
 import styles from './SearchBar.module.scss';
 
 class SearchBar extends Component {
+
+  inputField = null;
 
   constructor(props) {
     super(props);
@@ -11,6 +16,19 @@ class SearchBar extends Component {
       value: '',
       onSubmit: props.onSubmit || ((event) => {}),
     }
+
+    if (window.location.search.includes('q='))
+      this.state.value = this.parseQueryString(window.location.search);
+  }
+
+  // TODO Extract this somewhere (and from SearchResults) or discover a simpler way to acquire it.
+  parseQueryString = (url) => {
+    const stringToken = '?q=';
+    const dataStart = url.indexOf(stringToken);
+    const dataEnd = url.indexOf('?', dataStart) || undefined;
+    const raw = url.slice(dataStart + stringToken.length, dataEnd);
+    const query = raw.replaceAll('+', ' ');
+    return query;
   }
 
   handleChange = (event) => {
@@ -31,6 +49,21 @@ class SearchBar extends Component {
     this.setState({
       redirect: <Redirect push to={newRoute} />
     });
+
+    this.inputField.blur();
+  }
+
+  setFocused = () => {
+    this.setState({focused: true});
+  }
+
+  unsetFocused = () => {
+    this.setState({focused: false});
+  }
+
+  clearInput = () => {
+    this.setState({value: ''});
+    this.inputField.focus();
   }
 
   // TODO Use svg for mag glass instead.
@@ -41,14 +74,27 @@ class SearchBar extends Component {
         {/* Input Bar */}
         <div className={styles.focusBorder}>
           <div className={styles.inputContainer}>
-            <i className={styles.iconSearch} />
+            <IMagnifyingGlass className={`${styles.icon} ${styles.iSearch}`} />
             <input
               type="text"
+              ref={(input) => { this.inputField = input}}
               value={this.state.value}
               placeholder="What are you looking for?"
               className={styles.input}
               onChange={this.handleChange}
+              onFocus={this.setFocused}
+              onBlur={this.unsetFocused}
             />
+
+            {<ICross  // TODO Even while hidden, this thing is still clickable. It should probably disappear for real.
+              className={`
+                ${styles.icon}
+                ${styles.iClose}
+                ${!this.state.value && styles.iconHidden}
+              `}
+              onClick={this.clearInput}
+            />}
+
           </div>
         </div>
 

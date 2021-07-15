@@ -1,4 +1,5 @@
 @use '../styles/colors';
+@use 'sass:color' as sass-color;
 @use '../styles/functions' as *;
 
 $transitionTime: .3s;
@@ -16,9 +17,17 @@ $borderRadius: .2rem;
   box-shadow: 0 0 0 $inner #0000, 0 0 0 $outer #0000;
   &:hover {
     box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer $hover-color;
+
+    .icon {
+      fill: sass-color.scale($hover-color, $saturation: -5%, $lightness: -25%);
+    }
   }
   &:focus-within {
     box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer $focus-color;
+
+    .icon {
+      fill: sass-color.scale($focus-color, $saturation: -5%, $lightness: -10%);
+    }
   }
 }
 
@@ -60,6 +69,9 @@ $borderRadius: .2rem;
 }
 
 .button {
+  $color: #D0D0D8;
+  $glow-color: colors.get(highlight, bright);
+
   width: 9ch;
   height: 2.1rem;
   font-size: 1.125rem;
@@ -69,38 +81,37 @@ $borderRadius: .2rem;
   border: none;
   outline: none;
 
-  transition: background-color $transitionTime ease;
-  background-color: #DDD;
+  transition: background-color $transitionTime ease, color $transitionTime ease;
+  background-color: $color;
+
   &:hover, &:focus {
-    background-color: #EEE;
+    background-color: sass-color.scale($color, $lightness: 30%);
+    color: sass-color.scale($glow-color, $saturation: 5%, $lightness: -15%);
   }
+
+  cursor: pointer;
 }
 
-.iconSearch {
-  font-size: 1.8rem;
-  $color: #888;
+.icon {
+  width: 2rem;
 
-  display: inline-block;
-  width: 0.4em;
-  height: 0.4em;
-  box-sizing: content-box;
-  border: 0.1em solid $color;
   position: relative;
-  border-radius: 0.35em;
+  top: .35rem;
 
-  top: .08rem;
-  margin-right: .4rem;
+  transition: fill $transitionTime ease;
+  fill: gray;
+}
 
-  &:before {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      right: -0.25em;
-      bottom: -0.1em;
-      border-width: 0;
-      background: $color;
-      width: 0.35em;
-      height: 0.08em;
-      transform: rotate(45deg);
-  }
+.iconHidden {
+  fill: none !important;
+  cursor: default !important;
+}
+
+.iSearch {
+  margin-right: .15rem;
+}
+
+.iClose {
+  margin-left: .15rem;
+  cursor: pointer;
 }
