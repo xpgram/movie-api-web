@@ -32,31 +32,34 @@ $borderRadius: .2rem;
 }
 
 .form {
-  display: inline-block;
-  width: fit-content;
-}
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
 
-.spacer {
-  display: inline-block;
-  width: .5rem;
+  width: fit-content;
 }
 
 .focusBorder {
   display: inline-block;
   border-radius: $borderRadius;
-  // margin: .2rem; 
+  margin: 0 .25rem;
+
   @include hover;
 }
 
 .inputContainer {
-  background-color: colors.get(text, light);
-  padding: 0 .5rem;
+  display: flex;
+  flex-wrap: nowrap;
 
+  width: 60ch;
+
+  background-color: colors.get(text, light);
   border-radius: .25rem;
 }
 
 .input {
-  width: 40ch;
+  flex: 1 1 40ch;
+
   height: 2rem;
   font-size: 1.125rem;
 
@@ -72,8 +75,8 @@ $borderRadius: .2rem;
   $color: #D0D0D8;
   $glow-color: colors.get(highlight, bright);
 
-  width: 9ch;
-  height: 2.1rem;
+  width: 10ch;
+  height: 2.125rem;
   font-size: 1.125rem;
 
   border-radius: $borderRadius;
@@ -93,18 +96,11 @@ $borderRadius: .2rem;
 }
 
 .icon {
-  width: 2rem;
-
-  position: relative;
-  top: .35rem;
+  flex: 0 0 1.9rem;
+  margin: 0 .5rem;
 
   transition: fill $transitionTime ease;
   fill: gray;
-}
-
-.iconHidden {
-  fill: none !important;
-  cursor: default !important;
 }
 
 .iSearch {

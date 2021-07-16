@@ -1,6 +1,5 @@
 import { Component } from 'react';
-import SearchBar from '../components/SearchBar';
-import LogoText from '../components/LogoText';
+import { Header } from '../components/Header';
 
 import styles from './Home.module.scss';
 
@@ -20,8 +19,7 @@ export default class Home extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <LogoText />
-          <SearchBar />
+          <Header />
           <div className={styles.catalog}>{this.state.searchResults}</div>
         </div>
       </div>

@@ -9,7 +9,7 @@ export class Header extends Component {
 
   render() {
     return (
-      <header className={this.props.compact && styles.compactHeader}>
+      <header className={`${styles.header} ${this.props.compact && styles.compactHeader}`}>
         <Link className={styles.link} to='/'>
           <LogoText compact={this.props.compact} />
         </Link>

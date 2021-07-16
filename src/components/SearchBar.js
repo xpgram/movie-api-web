@@ -86,19 +86,13 @@ class SearchBar extends Component {
               onBlur={this.unsetFocused}
             />
 
-            {<ICross  // TODO Even while hidden, this thing is still clickable. It should probably disappear for real.
-              className={`
-                ${styles.icon}
-                ${styles.iClose}
-                ${!this.state.value && styles.iconHidden}
-              `}
+            {this.state.value && <ICross
+              className={`${styles.icon} ${styles.iClose}`}
               onClick={this.clearInput}
             />}
 
           </div>
         </div>
-
-        <span className={styles.spacer} />
 
         {/* Search Button */}
         <div className={styles.focusBorder}>

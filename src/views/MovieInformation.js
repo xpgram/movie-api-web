@@ -1,6 +1,4 @@
 import { Component } from 'react';
-import LogoTextSmall from '../components/LogoTextSmall';
-import SearchBar from '../components/SearchBar';
 import EmbroideredTerm from '../components/BorderComponent';
 import IMDbRatingWidget from '../components/IMDbRatingWidget';
 import { CoverImage } from '../components/CoverImage';
