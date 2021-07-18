@@ -10,6 +10,10 @@ import { Header } from '../components/Header';
 // const IMDB_API_KEY = 'k_e6xvn1mw';
 const OMDB_API_KEY = '9a856410';
 
+// TODO Center movie info in view unless scrollbar is engaged; too close to header.
+// TODO Finish vote icon behavior.
+// TODO Finish movie-info restructure: title header, title poster, title info.
+
 export default class MovieInformation extends Component {
 
   mounted = true;   // Aids abandonment of async calls
