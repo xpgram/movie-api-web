@@ -101,7 +101,7 @@ export default class MovieInformation extends Component {
               <div className={styles.cursoryInfo}>{cursoryInfo}</div>
             </div>
           {/* </div> */}
-          <UpvoteButtonWidget />
+          <UpvoteButtonWidget className={styles.upButton} />
           <IMDbRatingWidget rating={imdbRating} votes={imdbVotes} />
         </div>
 

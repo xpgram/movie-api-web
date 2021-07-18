@@ -1,130 +1,14 @@
 @use '../styles/colors';
 
-.wrapper {
-    // width: 2rem;
-    // height: 2rem;
-    transform: translateY(100%);
+.btnUpvote {
+  position: relative;
+  left: -1rem;
+  top: 2rem;
+
+  width: 3rem;
+  fill: white;
 }
 
-// TODO FUN TO CLICK
-// TODO SWEET ANIMS
-// TODO PUSH IN?
-// TODO LIGHT UP
-// TODO FUN SHAPE
 
-
-// SHAPES
-
-#magnifying-glass {
-    font-size: 10em;
-    display: inline-block;
-    width: 0.4em;
-    box-sizing: content-box;
-    height: 0.4em;
-    border: 0.1em solid red;
-    position: relative;
-    border-radius: 0.35em;
-
-    &:before {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        right: -0.25em;
-        bottom: -0.1em;
-        border-width: 0;
-        background: red;
-        width: 0.35em;
-        height: 0.08em;
-        transform: rotate(45deg);
-    }
-}
-
-.starFive {
-    $yellow: #CA5;
-    $size: 1.5rem;
-
-    margin: .5*$size 0;
-    position: relative;
-    display: block;
-    color: red;
-    width: 0;
-    height: 0;
-    border-right: 1*$size solid transparent;
-    border-bottom: .7*$size solid $yellow;
-    border-left: 1*$size solid transparent;
-    transform: rotate(35deg);
-
-    &:before {
-        border-bottom: .8*$size solid $yellow;
-        border-left: .3*$size solid transparent;
-        border-right: .3*$size solid transparent;
-        position: absolute;
-        height: 0;
-        width: 0;
-        top: -.45*$size;
-        left: -.65*$size;
-        display: block;
-        content: '';
-        transform: rotate(-35deg);
-    }
-
-    &:after {
-        position: absolute;
-        display: block;
-        color: $yellow;
-        top: .03*$size;
-        left: -1.05*$size;
-        width: 0;
-        height: 0;
-        border-right: 1*$size solid transparent;
-        border-bottom: .7*$size solid $yellow;
-        border-left: 1*$size solid transparent;
-        transform: rotate(-70deg);
-        content: '';
-    }
-}
-
-.starFiveEmpty {
-    $yellow: #555;
-    $size: 1.5rem;
-
-    margin: .5*$size 0;
-    position: relative;
-    display: block;
-    color: red;
-    width: 0;
-    height: 0;
-    border-right: 1*$size solid transparent;
-    border-bottom: .7*$size solid $yellow;
-    border-left: 1*$size solid transparent;
-    transform: rotate(35deg);
-
-    &:before {
-        border-bottom: .8*$size solid $yellow;
-        border-left: .3*$size solid transparent;
-        border-right: .3*$size solid transparent;
-        position: absolute;
-        height: 0;
-        width: 0;
-        top: -.45*$size;
-        left: -.65*$size;
-        display: block;
-        content: '';
-        transform: rotate(-35deg);
-    }
-
-    &:after {
-        position: absolute;
-        display: block;
-        color: $yellow;
-        top: .03*$size;
-        left: -1.05*$size;
-        width: 0;
-        height: 0;
-        border-right: 1*$size solid transparent;
-        border-bottom: .7*$size solid $yellow;
-        border-left: 1*$size solid transparent;
-        transform: rotate(-70deg);
-        content: '';
-    }
-}
+// TODO I need to sort out this broken heading component.
+// That said, this star should actually appear over the poster.
