@@ -1,0 +1,43 @@
+
+.wrapper {
+  display: flex;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.title {
+  flex: 0 0 100%;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.3rem;
+  margin-bottom: .5rem;
+}
+
+.infoContainer {
+
+  &:last-child::after {
+    content: ''; 
+  }
+}
+
+.info {
+  display: inline-block;
+  margin-right: 1rem;
+
+  &::after {
+    content: '·';
+    position: relative;
+    left: .4rem;
+  }
+}
+
+.upButton {
+  // height: 5rem;
+  border: 1px solid red;
+
+  // TODO Not centered?
+}

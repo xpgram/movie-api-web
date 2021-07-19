@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import EmbroideredTerm from '../components/BorderComponent';
+import { TitleHeader } from '../components/MovieInfoView/TitleHeader';
 import IMDbRatingWidget from '../components/IMDbRatingWidget';
 import { CoverImage } from '../components/CoverImage';
 
@@ -96,6 +97,13 @@ export default class MovieInformation extends Component {
       <div className={styles.movieInfoWrapperB}>
 
         <Header compact={true} />
+
+        <TitleHeader
+          title={Title}
+          info={cursoryInfoList}
+          rating={imdbRating}
+          votes={imdbVotes}
+        />
 
         {/* Section 1: Title, Category and IMDb Rating. */}
         <div className={styles.heading}>
