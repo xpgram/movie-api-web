@@ -21,10 +21,12 @@ export class UpvoteButtonWidget extends Component {
   render() {
     return (
       <div {...this.props}>
-        <IStar
-          className={styles.btnUpvote}
-          onClick={this.click}
-        />
+        <div className={styles.container}>
+          <IStar
+            className={ (this.state.upvoted) ? styles.active : styles.inactive }
+            onClick={this.click}
+          />
+        </div>
       </div>
     );
   }

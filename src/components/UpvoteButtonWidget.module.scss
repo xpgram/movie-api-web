@@ -1,12 +1,49 @@
+@use 'sass:color' as sass-color;
 @use '../styles/colors';
 
-.btnUpvote {
-  position: relative;
-  left: -1rem;
-  top: 2rem;
+$color: #EC8;
+$size: 2.8rem;
+$zoom: 1.12;
+$zoom-active: 1.04;
+$anim-time: .1s;
 
-  width: 3rem;
-  fill: white;
+.container {
+  width: $size;
+  height: fit-content;
+  margin: 1rem;
+}
+
+@mixin button {
+  width: $size;
+  stroke-width: $size;
+  stroke: $color;
+  filter: drop-shadow(0rem .3rem .1rem #0006);
+
+  transition: transform $anim-time ease, fill $anim-time ease;
+  user-select: none;
+
+  &:hover {
+    transform: scale($zoom);
+  }
+
+  &:active {
+    transform: scale($zoom-active);
+  }
+}
+
+.inactive {
+  @include button;
+
+  fill: #0000;
+  &:hover {
+    fill: sass-color.scale(#FFF, $alpha: -90%);
+  }
+}
+
+.active {
+  @include button;
+
+  fill: $color;
 }
 
 

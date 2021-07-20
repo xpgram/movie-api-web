@@ -42,8 +42,11 @@
   margin-bottom: 1rem;
 }
 
-.upButton {
-  flex: 0 0 2rem;
+.upbutton {
+  // TODO Okay, how do we do just the poster again? Look at MovieCard...
+  position: absolute;
+  top: 5%;
+  left: 73%;
 }
 
 .titleDetails {

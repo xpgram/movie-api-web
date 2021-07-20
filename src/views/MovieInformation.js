@@ -7,6 +7,7 @@ import { CoverImage } from '../components/CoverImage';
 import styles from './MovieInformation.module.scss';
 import { UpvoteButtonWidget } from '../components/UpvoteButtonWidget';
 import { Header } from '../components/Header';
+import { IStar } from '../components/Icons';
 
 // const IMDB_API_KEY = 'k_e6xvn1mw';
 const OMDB_API_KEY = '9a856410';
@@ -105,22 +106,12 @@ export default class MovieInformation extends Component {
           votes={imdbVotes}
         />
 
-        {/* Section 1: Title, Category and IMDb Rating. */}
-        <div className={styles.heading}>
-          {/* <div> */}
-            <div className={styles.titleInfo}>
-              <h2 className={styles.title}>{Title}</h2>
-              <div className={styles.cursoryInfo}>{cursoryInfo}</div>
-            </div>
-          {/* </div> */}
-          <UpvoteButtonWidget className={styles.upButton} />
-          <IMDbRatingWidget rating={imdbRating} votes={imdbVotes} />
-        </div>
-
         {/* Section 2: Poster and details. */}
         <div className={styles.titleDetails}>
-          <CoverImage src={Poster} alt={Title} />
-          {/* <img src={Poster} alt={Title} className={styles.coverImage} /> */}
+          <div style={{width: 'fit-content', height: 'fit-content'}}>
+            <CoverImage src={Poster} alt={Title} />
+            <UpvoteButtonWidget className={styles.upbutton} />
+          </div>
           <div className={styles.details}>
             <div className={styles.genreWrapper}>
               {genreList}
@@ -131,6 +122,7 @@ export default class MovieInformation extends Component {
             <div className={styles.languageWrapper}>
               {languageList}
             </div>
+            <UpvoteButtonWidget />
           </div>
         </div>
   
