@@ -32,6 +32,8 @@ export default class MovieInformation extends Component {
       Language: '',
       imdbRating: '',
       imdbVotes: '',
+
+      ready: false,   // TODO true if already cached?
     }
   }
 
@@ -68,6 +70,8 @@ export default class MovieInformation extends Component {
         data[pair[0]] = '';
     });
 
+    data.ready = true;    // Add new object value component to this.state
+
     this.setState(data);
   }
 
@@ -90,7 +94,8 @@ export default class MovieInformation extends Component {
     // const languageList = <div className={styles.language}>{Language.replaceAll(',',' ·')}</div>;
 
     return (
-      <div className={styles.movieInfoWrapper}>
+      <div className={`${styles.movieInfoWrapper} ${this.state.ready && styles.showPage}`}>
+        {/* TODO Display Header but hide other content; show loading icon instead. */}
 
         <Header compact={true} />
 
@@ -116,6 +121,15 @@ export default class MovieInformation extends Component {
             <div className={styles.languageWrapper}>
               {languageList}
             </div>
+
+            {/* TODO Add cosmetic effect here? In ::after it affects user select. */}
+            {/* details div doesn't set width and height, though, which makes
+                positional underlay adjustements massively fucking irritating. */}
+
+            {/* Anyway, we're more or less done after I add some kind of backend
+                upvoting system.
+
+                Oh, and clean up console warnings. */}
           </div>
         </div>
 

@@ -23,8 +23,6 @@ export class MovieCard extends Component {
       noImageDisplay: false,
     };
 
-    console.log(this.state.name, this.state.image);
-
     this.animOrdinal = Math.random()*6;
   }
 
