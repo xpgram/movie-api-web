@@ -3,18 +3,17 @@
 
 $color: #EC8;
 $size: 2.8rem;
-$zoom: 1.12;
-$zoom-active: 1.04;
 $anim-time: .1s;
 
-.container {
+.default {
   width: $size;
-  height: fit-content;
-  margin: 1rem;
 }
 
 @mixin button {
-  width: $size;
+  $zoom: scale(1.12);
+  $zoom-active: scale(1.04);
+
+  width: 100%;
   stroke-width: $size;
   stroke: $color;
   filter: drop-shadow(0rem .3rem .1rem #0006);
@@ -23,11 +22,11 @@ $anim-time: .1s;
   user-select: none;
 
   &:hover {
-    transform: scale($zoom);
+    transform: $zoom;
   }
 
   &:active {
-    transform: scale($zoom-active);
+    transform: $zoom-active;
   }
 }
 

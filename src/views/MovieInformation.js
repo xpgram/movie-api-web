@@ -1,13 +1,10 @@
 import { Component } from 'react';
-import EmbroideredTerm from '../components/BorderComponent';
+import { Header } from '../components/Header';
 import { TitleHeader } from '../components/MovieInfoView/TitleHeader';
-import IMDbRatingWidget from '../components/IMDbRatingWidget';
 import { CoverImage } from '../components/CoverImage';
+import EmbroideredTerm from '../components/BorderComponent';
 
 import styles from './MovieInformation.module.scss';
-import { UpvoteButtonWidget } from '../components/UpvoteButtonWidget';
-import { Header } from '../components/Header';
-import { IStar } from '../components/Icons';
 
 // const IMDB_API_KEY = 'k_e6xvn1mw';
 const OMDB_API_KEY = '9a856410';
@@ -82,7 +79,6 @@ export default class MovieInformation extends Component {
     } = this.state;
 
     const cursoryInfoList = [`${Year} (${Type})`, Rated, Runtime]
-    const cursoryInfo = cursoryInfoList.filter( v => Boolean(v) ).join(' · ');
 
     const genreList = Genre.split(',').map( (genre, idx) => {
       return (<EmbroideredTerm key={`genre_${idx}`}>{genre}</EmbroideredTerm>)
@@ -95,7 +91,6 @@ export default class MovieInformation extends Component {
 
     return (
       <div className={styles.movieInfoWrapper}>
-      <div className={styles.movieInfoWrapperB}>
 
         <Header compact={true} />
 
@@ -110,7 +105,6 @@ export default class MovieInformation extends Component {
         <div className={styles.titleDetails}>
           <div style={{width: 'fit-content', height: 'fit-content'}}>
             <CoverImage src={Poster} alt={Title} />
-            <UpvoteButtonWidget className={styles.upbutton} />
           </div>
           <div className={styles.details}>
             <div className={styles.genreWrapper}>
@@ -122,11 +116,9 @@ export default class MovieInformation extends Component {
             <div className={styles.languageWrapper}>
               {languageList}
             </div>
-            <UpvoteButtonWidget />
           </div>
         </div>
-  
-      </div>
+
       </div>
     );
   }

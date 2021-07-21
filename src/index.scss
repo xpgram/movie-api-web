@@ -1,3 +1,5 @@
+@use './styles/colors';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +12,16 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.main {
+  color: colors.get(text, light);
+  background: colors.get(primary, neutral);
+
+  min-width: 150ch;   // This is only because of the SearchBar in the compact header.
+}
+
+.page-content {
+  margin: 0 auto;
+  max-width: 200ch;
 }

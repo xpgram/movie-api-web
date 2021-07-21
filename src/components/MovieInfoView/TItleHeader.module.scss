@@ -1,17 +1,19 @@
+@use '../../styles/colors';
 
 .wrapper {
   display: flex;
+  justify-content: space-between;
   margin: 1rem 0;
 }
 
 .titleContainer {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
 }
 
 .title {
-  flex: 0 0 100%;
   font-size: 2rem;
   font-weight: 700;
   line-height: 2.3rem;
@@ -20,25 +22,39 @@
 
 .infoContainer {
 
-  &:last-child::after {
-    content: ''; 
-  }
 }
 
 .info {
-  display: inline-block;
-  margin-right: 1rem;
+  $size: .3rem;
+  $radius: $size / 2;
+  $dist: $size * 4;
 
-  &::after {
-    content: '·';
+  display: inline-block;
+  margin-right: $dist;
+
+  & + .info::before {
+    content: '';
+    display: inline-block;
+    width: $size;
+    height: $size;
+    
+    vertical-align: middle;
     position: relative;
-    left: .4rem;
+    left: (-$dist / 2) + $radius;
+
+    border-radius: 50%;
+    background-color: colors.get(text, light);
   }
 }
 
+// TODO Remove; implement over the poster component.
 .upButton {
-  // height: 5rem;
-  // border: 1px solid red;
+  width: 3rem;
+  margin: 0 1rem;
+}
 
-  // TODO Not centered?
+.rightPanel {
+  display: flex;
+  align-items: center;
+  height: fit-content;
 }

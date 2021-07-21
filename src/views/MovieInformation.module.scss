@@ -5,23 +5,9 @@
   min-height: 100vh;
   padding: 1rem 2rem;
 
-  background: colors.get(background-color);
-  color: colors.get(text, light);
-  
-  display: flex;
-  justify-content: center;
-}
-
-.movieInfoWrapperB {
   width: 95%;
-  max-width: 150ch;
-}
-
-.heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  // margin: 0 1rem;
+  // max-width: 150ch;
+  margin: auto;
 }
 
 .titleInfo {
@@ -40,13 +26,6 @@
   font-size: 1rem;
   line-height: 0.8rem;
   margin-bottom: 1rem;
-}
-
-.upbutton {
-  // TODO Okay, how do we do just the poster again? Look at MovieCard...
-  position: absolute;
-  top: 5%;
-  left: 73%;
 }
 
 .titleDetails {

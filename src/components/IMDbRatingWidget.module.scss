@@ -1,5 +1,13 @@
 @use '../styles/colors';
 
+.border {
+    width: fit-content;
+    border: .15rem solid colors.get(text, light);
+    padding: .3rem;
+
+    margin: -.45rem;    // Aligns items with inner, but may overlap.
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -11,9 +19,6 @@
     text-align: center;
     line-height: 1.5rem;
 
-    // border: 1px solid white, 1px solid colors.get(primery, dark);
-    box-shadow: 0 0 0 .3rem colors.get(primary, neutral), 0 0 0 .4rem colors.get(text, light);
-    // background-color: colors.get(primary, dark);
     background-color: #972;
 
     user-select: none;
@@ -21,11 +26,7 @@
     transition: all .3s ease;
     &:hover {
         background-color: #B93;
-        box-shadow: (
-            0 0 0 .3rem colors.get(primary, neutral),
-            0 0 0 .4rem colors.get(text, light),
-            inset 0 0 .25rem .15rem #0004,
-        );
+        box-shadow: inset 0 0 .25rem .15rem #0004;
     }
 }
 

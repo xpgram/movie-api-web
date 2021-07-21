@@ -16,8 +16,10 @@ export class TitleHeader extends Component {
             {cursoryInfo}
           </div>
         </div>
-        <UpvoteButtonWidget className={styles.upButton} />
-        <IMDbRatingWidget rating={this.props.rating} votes={this.props.votes} />
+        <div className={styles.rightPanel}>
+          <UpvoteButtonWidget className={styles.upButton} />
+          <IMDbRatingWidget className={styles.imdb} rating={this.props.rating} votes={this.props.votes} />
+        </div>
       </div>
     )
   }

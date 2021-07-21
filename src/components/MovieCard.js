@@ -53,6 +53,9 @@ export class MovieCard extends Component {
     }, this.animOrdinal*100);
   }
 
+  // TODO MovieCard should include the upvote / save-to-favorites button
+  // TODO MovieCard should include multiple styles: one rotate-card, one square poster.
+
   render() {
     return (
       <div className={styles.container}>

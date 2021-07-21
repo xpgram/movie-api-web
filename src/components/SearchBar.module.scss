@@ -34,16 +34,19 @@ $borderRadius: .2rem;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-
   width: fit-content;
 }
 
 .focusBorder {
   display: inline-block;
   border-radius: $borderRadius;
-  margin: 0 .25rem;
+  margin-inline: -$borderRadius;
 
   @include hover;
+
+  & + .focusBorder {
+    margin-left: .7rem;
+  }
 }
 
 .inputContainer {
