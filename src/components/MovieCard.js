@@ -59,25 +59,23 @@ export class MovieCard extends Component {
     return (
       <div className={styles.container}>
         <div className={`${styles.shadow} ${this.state.shadowVisible && styles['shadow-visible']}`} />
-        
-          <div className={styles['zoom-container']}>
-            <div className={`${styles.card} ${this.state.cardVisible && styles['card-visible']}`}>
+        <div className={styles['zoom-container']}>
+          <div className={`${styles.card} ${this.state.cardVisible && styles['card-visible']}`}>
 
-              {/* TODO Only class-names; modules fail without them. */}
-              {!this.state.noImageDisplay && <img
-                className={styles.poster}
-                src={this.state.image}
-                alt={this.state.name}
-                onLoad={this.onLoad}
-                onError={this.onImageNotFound}
-              />}
-              {this.state.noImageDisplay && <div className={styles.noImageTitleCard}>
-                <div className={styles.noImageTitleCardName}>
-                  {this.state.name}
-                </div>
-              </div>}
+            {!this.state.noImageDisplay && <img
+              className={styles.poster}
+              src={this.state.image}
+              alt={this.state.name}
+              onLoad={this.onLoad}
+              onError={this.onImageNotFound}
+            />}
+            {this.state.noImageDisplay && <div className={styles.noImageTitleCard}>
+              <div className={styles.noImageTitleCardName}>
+                {this.state.name}
+              </div>
+            </div>}
 
-              <Link className={styles['link-label']} to={`/movie?id=${this.state.id}`}>
+            <Link className={styles['link-label']} to={`/movie?id=${this.state.id}`}>
               <div className={styles.overlay}>
                 <div className={styles.text}>
                   <div className={styles.title}>{this.state.name}</div>
@@ -85,11 +83,12 @@ export class MovieCard extends Component {
                   {/* <Rating value={this.state.rating} /> */}
                 </div>
               </div>
-              </Link>
+            </Link>
 
-              <UpvoteButtonWidget className={styles.upbutton} movieId={this.state.id} />
-            </div>
+            <UpvoteButtonWidget className={styles.upbutton} movieId={this.state.id} />
+
           </div>
+        </div>
       </div>
     )
   }
