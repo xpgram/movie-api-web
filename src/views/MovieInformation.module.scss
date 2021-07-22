@@ -6,11 +6,18 @@
   padding: 1rem 2rem;
 
   width: 95%;
-  // max-width: 150ch;
   margin: auto;
+}
 
+.contentWrapper {
   opacity: 0;
   transition: opacity .3s ease;
+}
+
+.loadingIcon {
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
 }
 
 .showPage {
@@ -24,6 +31,8 @@
 }
 
 .details {
+  flex-grow: 1;
+  min-height: 8rem; // Remove?
   position: relative;
   display: inline-block;
   margin-top: 1rem;

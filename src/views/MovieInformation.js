@@ -3,6 +3,7 @@ import { Header } from '../components/Header';
 import { TitleHeader } from '../components/MovieInfoView/TitleHeader';
 import { CoverImage } from '../components/CoverImage';
 import EmbroideredTerm from '../components/BorderComponent';
+import LoadingIcon from '../components/LoadingIcon';
 
 import styles from './MovieInformation.module.scss';
 
@@ -95,39 +96,47 @@ export default class MovieInformation extends Component {
     // const languageList = <div className={styles.language}>{Language.replaceAll(',',' ·')}</div>;
 
     return (
-      <div className={`${styles.movieInfoWrapper} ${this.state.ready && styles.showPage}`}>
-        {/* TODO Display Header but hide other content; show loading icon instead. */}
+      <div className={`${styles.movieInfoWrapper}`}>
 
         <Header compact={true} />
 
-        <TitleHeader
-          title={Title}
-          info={cursoryInfoList}
-          movieId={imdbID}
-          rating={imdbRating}
-          votes={imdbVotes}
-        />
-
-        {/* Section 2: Poster and details. */}
-        <div className={styles.titleDetails}>
-          <div style={{width: 'fit-content', height: 'fit-content'}}>
-            <CoverImage src={Poster} alt={Title} />
+        {/* Loading Icon */}
+        {!this.state.ready && (
+          <div className={styles.loadingIcon}>
+            <LoadingIcon visible={!this.state.ready} />
           </div>
-          
-          <div className={styles.details}>
-            <div> {/* Text div; wrapper separates user-select from visual accent. */}
-              <div className={styles.genreWrapper}>
-                {genreList}
-              </div>
-              <p className={styles.directors}>{Director}</p>
-              <p className={styles.writers}>{Writer}</p>
-              <p className={styles.plot}>{Plot}</p>
-              <div className={styles.languageWrapper}>
-                {languageList}
-              </div>
-            </div>
+        )}
 
-            <div className={styles.detailsAccent} />
+        <div className={`${styles.contentWrapper} ${this.state.ready && styles.showPage}`}>
+          <TitleHeader
+            title={Title}
+            info={cursoryInfoList}
+            movieId={imdbID}
+            rating={imdbRating}
+            votes={imdbVotes}
+          />
+
+          {/* Section 2: Poster and details. */}
+          <div className={styles.titleDetails}>
+            <div style={{width: 'fit-content', height: 'fit-content'}}>
+              <CoverImage src={Poster} alt={Title} />
+            </div>
+            
+            <div className={styles.details}>
+              <div> {/* Text div; wrapper separates user-select from visual accent. */}
+                <div className={styles.genreWrapper}>
+                  {genreList}
+                </div>
+                <p className={styles.directors}>{Director}</p>
+                <p className={styles.writers}>{Writer}</p>
+                <p className={styles.plot}>{Plot}</p>
+                <div className={styles.languageWrapper}>
+                  {languageList}
+                </div>
+              </div>
+
+              <div className={styles.detailsAccent} />
+            </div>
           </div>
         </div>
 
