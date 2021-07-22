@@ -3,24 +3,16 @@
 .embroidery {
     margin-right: .5rem;
     padding: .5rem 1rem;
-    border: .1rem solid colors.get(text, light);
+    border: .125rem solid colors.get(text, light);
     border-radius: 2rem;
-
+    
     text-align: center;
-    // flex-grow: 1;
-    // max-width: 14ch;
-
-    // TODO flex-grow only when wrapping
-    // Like text justifying, I want like a minimum/maximum word distance the system
-    // can use to make "paragraphs" a consistent width.
-    // So, straight right-side lines but absolutely no large gaps between terms.
-
-    transition: color .25s ease, border-color .25s ease;
-
     user-select: none;
 
+    transition: color .25s ease, border-color .25s ease;
     &:hover {
-        color: #FB6;
-        border-color: #FB6;
+        $color: colors.get(accent-dark);
+        color: $color;
+        border-color: $color;
     }
 }

@@ -1,4 +1,7 @@
+@use 'sass:color' as sass-color;
 @use '../styles/colors';
+
+$color: colors.get(accent);
 
 .border {
     width: fit-content;
@@ -19,13 +22,13 @@
     text-align: center;
     line-height: 1.5rem;
 
-    background-color: #972;
+    background-color: sass-color.scale($color, $lightness: -25%);
 
     user-select: none;
 
     transition: all .3s ease;
     &:hover {
-        background-color: #B93;
+        background-color: sass-color.scale($color, $saturation: -30%);
         box-shadow: inset 0 0 .25rem .15rem #0004;
     }
 }

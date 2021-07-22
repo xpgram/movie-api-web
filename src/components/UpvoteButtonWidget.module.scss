@@ -1,7 +1,7 @@
 @use 'sass:color' as sass-color;
 @use '../styles/colors';
 
-$color: #EC8;
+$color: colors.get(accent);
 $size: 2.8rem;
 $anim-time: .1s;
 
@@ -35,7 +35,7 @@ $anim-time: .1s;
 
   fill: #0000;
   &:hover {
-    fill: sass-color.scale(#FFF, $alpha: -90%);
+    fill: #FFF1;
   }
 }
 
