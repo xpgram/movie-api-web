@@ -4,32 +4,6 @@
 $transitionTime: .3s;
 $borderRadius: .2rem;
 
-@mixin hover {
-  $inner: .125rem;
-  $outer: .225rem;
-  $bg-color: colors.get(background-color);
-  $hover-color: colors.get(highlight, faded);
-  $focus-color: colors.get(highlight, bright);
-
-  transition: box-shadow $transitionTime ease;
-
-  box-shadow: 0 0 0 $inner #0000, 0 0 0 $outer #0000;
-  &:hover {
-    box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer $hover-color;
-
-    .icon {
-      fill: sass-color.scale($hover-color, $saturation: -5%, $lightness: -25%);
-    }
-  }
-  &:focus-within {
-    box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer $focus-color;
-
-    .icon {
-      fill: sass-color.scale($focus-color, $saturation: -5%, $lightness: -10%);
-    }
-  }
-}
-
 .form {
   display: flex;
   flex-wrap: nowrap;
@@ -42,8 +16,29 @@ $borderRadius: .2rem;
   border-radius: $borderRadius;
   margin-inline: -$borderRadius;
 
-  @include hover;
+  $inner: .125rem;
+  $outer: .225rem;
+  $bg-color: colors.get(background-color);
+  $hover-color: colors.get(highlight, faded);
+  $focus-color: colors.get(highlight, bright);
 
+  // Hover and focus border effect
+  transition: box-shadow $transitionTime ease;
+  box-shadow: 0 0 0 $inner #0000, 0 0 0 $outer #0000;
+  &:hover {
+    box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer $hover-color;
+    .icon {
+      fill: sass-color.scale($hover-color, $saturation: -5%, $lightness: -25%);
+    }
+  }
+  &:focus-within {
+    box-shadow: 0 0 0 $inner $bg-color, 0 0 0 $outer $focus-color;
+    .icon {
+      fill: sass-color.scale($focus-color, $saturation: -5%, $lightness: -10%);
+    }
+  }
+
+  // Include distance between input and button.
   & + .focusBorder {
     margin-left: .7rem;
   }
@@ -60,12 +55,19 @@ $borderRadius: .2rem;
   border-radius: .25rem;
 }
 
+.inputContainerCompact {
+  @extend .inputContainer;
+  width: 35ch;
+}
+
 .input {
-  flex: 1 1 40ch;
+  overflow: hidden;
+  flex: 1 1 100%;
 
   height: 2rem;
   font-size: 1.2rem;
 
+  background: none;
   border: none;
   outline: none;
   

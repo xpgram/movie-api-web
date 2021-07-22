@@ -18,7 +18,7 @@ code {
   color: colors.get(text, light);
   background: colors.get(primary, neutral);
 
-  min-width: 150ch;   // This is only because of the SearchBar in the compact header.
+  min-width: 130ch;   // This is only because of the SearchBar in the compact header.
 }
 
 .page-content {

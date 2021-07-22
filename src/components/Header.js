@@ -14,7 +14,7 @@ export class Header extends Component {
           <LogoText compact={this.props.compact} />
         </Link>
         <span className={styles.search}>
-          <SearchBar />
+          <SearchBar compact={this.props.compact} />
         </span>
       </header>
     );

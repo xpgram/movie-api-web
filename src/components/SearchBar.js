@@ -66,14 +66,13 @@ class SearchBar extends Component {
     this.inputField.focus();
   }
 
-  // TODO Use svg for mag glass instead.
   render() {
     return (
       <form className={styles.form} onSubmit={this.handleSubmit}>
 
         {/* Input Bar */}
         <div className={styles.focusBorder}>
-          <div className={styles.inputContainer}>
+          <div className={(this.props.compact) ? styles.inputContainerCompact : styles.inputContainer}>
             <IMagnifyingGlass className={`${styles.icon} ${styles.iSearch}`} />
             <input
               type="text"
