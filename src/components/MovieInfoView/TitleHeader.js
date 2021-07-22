@@ -6,7 +6,7 @@ import styles from './TitleHeader.module.scss';
 
 export class TitleHeader extends Component {
   render() {
-    const cursoryInfo = this.props.info.map( v => <div className={styles.info}> {v} </div> );
+    const cursoryInfo = this.props.info.map( (v, i) => <div key={`cursoryInfo_${i}`} className={styles.info}> {v} </div> );
 
     return (
       <div className={styles.wrapper}>

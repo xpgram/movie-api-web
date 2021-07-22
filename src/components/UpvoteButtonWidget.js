@@ -22,7 +22,7 @@ export class UpvoteButtonWidget extends Component {
   
   render() {
     const render = (
-      <div className={styles.default} {...this.props}>
+      <div className={`${styles.default} ${this.props.className}`}>
         <IStar
           className={ (this.state.upvoted) ? styles.active : styles.inactive }
           onClick={this.click}
