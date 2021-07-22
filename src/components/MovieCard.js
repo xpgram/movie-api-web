@@ -52,8 +52,7 @@ export class MovieCard extends Component {
     }, this.animOrdinal*100);
   }
 
-  // TODO MovieCard should include the upvote / save-to-favorites button
-  // TODO MovieCard should include multiple styles: one rotate-card, one square poster.
+  // TODO MovieCard should use CoverImage internally; helps unify no-image stylings.
 
   render() {
     return (

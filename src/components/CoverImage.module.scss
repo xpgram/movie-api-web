@@ -3,23 +3,42 @@
 // TODO Why is all this reseting necessary? Where do I globally center images?
 
 .imageWrapper {
-    position: relative;
-    padding: 1rem;
-    left: -1rem;
+  position: relative;
+  padding: 1rem;
+  left: -1rem;
 
-    background-color: colors.get(primary, dark);
+  background-color: colors.get(primary, dark);
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    user-select: none;
+  user-select: none;
 }
 
 .image {
-    position: relative;
-    width: 20rem;
-    transform: translate(0,0);
-    left: 0;
+  position: relative;
+  width: 20rem;
+  transform: translate(0,0);
+  left: 0;
 
-    border: .08rem solid colors.get(text, light);
+  border: .08rem solid colors.get(text, light);
+}   
+
+.noImageTitleCard {
+  position: relative;
+  width: 20rem;
+  height: 29rem;
+  background: linear-gradient(to bottom, #111 5%, #302028 5%, #202830 95%, #111 95%);
+  color: #AAA;
+  font-size: 1.5rem;
+
+  border: .08rem solid colors.get(text, light);
+}
+
+.noImageTitleCardName {
+  margin: 0 5%;
+  text-align: center;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
 }

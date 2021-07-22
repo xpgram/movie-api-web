@@ -3,15 +3,38 @@ import { Component } from 'react';
 import styles from './CoverImage.module.scss';
 
 export class CoverImage extends Component {
-    render() {
-        return (
-            <div className={styles.imageWrapper}>
-                <img
-                    src={this.props.src}
-                    alt={this.props.alt}
-                    className={styles.image}
-                    />
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      noImage: false,
+    };
+  }
+
+  onImageNotFound = () => {
+    this.setState({noImage: true});
+  }
+
+  render() {
+    return (
+      <div className={styles.imageWrapper}>
+        {!this.state.noImage && (
+          <img
+            src={this.props.src}
+            alt={this.props.alt}
+            className={styles.image}
+            onError={this.onImageNotFound}
+          />
+        )}
+
+        {this.state.noImage && (
+          <div className={styles.noImageTitleCard}>
+            <div className={styles.noImageTitleCardName}>
+              {this.props.alt}
             </div>
-        );
-    }
+          </div>
+        )}
+      </div>
+    );
+  }
 }
