@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './MovieCard.module.scss';
+import { UpvoteButtonWidget } from './UpvoteButtonWidget';
 
 // TODO Extract from SearchResults page
 // I want to use this on MovieInfo, too, via <MovieCard hover='disabled' />
@@ -58,12 +59,13 @@ export class MovieCard extends Component {
     return (
       <div className={styles.container}>
         <div className={`${styles.shadow} ${this.state.shadowVisible && styles['shadow-visible']}`} />
-        <Link className={styles['link-label']} to={`/movie?id=${this.state.id}`}>
+        
           <div className={styles['zoom-container']}>
             <div className={`${styles.card} ${this.state.cardVisible && styles['card-visible']}`}>
 
               {/* TODO Only class-names; modules fail without them. */}
               {!this.state.noImageDisplay && <img
+                className={styles.poster}
                 src={this.state.image}
                 alt={this.state.name}
                 onLoad={this.onLoad}
@@ -75,6 +77,7 @@ export class MovieCard extends Component {
                 </div>
               </div>}
 
+              <Link className={styles['link-label']} to={`/movie?id=${this.state.id}`}>
               <div className={styles.overlay}>
                 <div className={styles.text}>
                   <div className={styles.title}>{this.state.name}</div>
@@ -82,9 +85,11 @@ export class MovieCard extends Component {
                   {/* <Rating value={this.state.rating} /> */}
                 </div>
               </div>
+              </Link>
+
+              <UpvoteButtonWidget className={styles.upbutton} movieId={this.state.id} />
             </div>
           </div>
-        </Link>
       </div>
     )
   }

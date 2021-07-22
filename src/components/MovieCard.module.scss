@@ -63,7 +63,7 @@
 
 ////// Card Sub-Elements //////
 
-img {
+.poster {
   width: 100%;
 
   position: absolute;
@@ -90,6 +90,14 @@ img {
   position: absolute;
   transform: translateY(-50%);
   top: 50%;
+}
+
+.upbutton {
+  width: 3rem;
+
+  position: absolute;
+  top: .5rem;
+  right: .25rem;
 }
 
 .overlay {
