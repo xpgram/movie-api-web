@@ -18,22 +18,22 @@ export class CoverImage extends Component {
   render() {
     return (
       <div className={styles.imageWrapper}>
-        {!this.state.noImage && (
+        {this.props.src !== null && !this.state.noImage &&
           <img
             src={this.props.src}
             alt={this.props.alt}
             className={styles.image}
             onError={this.onImageNotFound}
           />
-        )}
+        }
 
-        {this.state.noImage && (
+        {this.state.noImage &&
           <div className={styles.noImageTitleCard}>
             <div className={styles.noImageTitleCardName}>
               {this.props.alt}
             </div>
           </div>
-        )}
+        }
       </div>
     );
   }

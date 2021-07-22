@@ -22,7 +22,7 @@ export default class MovieInformation extends Component {
     super(props);
     this.state = {
       imdbID: '',
-      Poster: '',
+      Poster: null,
       Title: '[title]',
       Year: '',
       Runtime: '',
