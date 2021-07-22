@@ -11,9 +11,9 @@ export default class NotFoundPage extends Component {
 
   render() {
     return (
-      <body>
+      <div>
         Hm? Nothing is here.
-      </body>
+      </div>
     );
   }
 }

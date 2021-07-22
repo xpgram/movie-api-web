@@ -79,7 +79,8 @@ export default class MovieInformation extends Component {
     const {
       Poster, Title, Year, Runtime, Plot,
       Director, Writer, Genre, Language,
-      Rated, imdbRating, imdbVotes, Type,
+      Rated, imdbID, imdbRating, imdbVotes,
+      Type,
     } = this.state;
 
     const cursoryInfoList = [`${Year} (${Type})`, Rated, Runtime]
@@ -102,6 +103,7 @@ export default class MovieInformation extends Component {
         <TitleHeader
           title={Title}
           info={cursoryInfoList}
+          movieId={imdbID}
           rating={imdbRating}
           votes={imdbVotes}
         />

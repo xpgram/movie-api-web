@@ -13,13 +13,15 @@ export class UpvoteButtonWidget extends Component {
   }
   
   click = () => {
+    // TODO Request DB or whatever update movieId upvote.
+
     this.setState({
       upvoted: !this.state.upvoted,
     });
   }
   
   render() {
-    return (
+    const render = (
       <div className={styles.default} {...this.props}>
         <IStar
           className={ (this.state.upvoted) ? styles.active : styles.inactive }
@@ -27,5 +29,7 @@ export class UpvoteButtonWidget extends Component {
         />
       </div>
     );
+
+    return (this.props.movieId) ? render : null;
   }
 }

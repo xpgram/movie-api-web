@@ -17,7 +17,7 @@ export class TitleHeader extends Component {
           </div>
         </div>
         <div className={styles.rightPanel}>
-          <UpvoteButtonWidget className={styles.upButton} />
+          <UpvoteButtonWidget className={styles.upButton} movieId={this.props.movieId} />
           <IMDbRatingWidget className={styles.imdb} rating={this.props.rating} votes={this.props.votes} />
         </div>
       </div>
