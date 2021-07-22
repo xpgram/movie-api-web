@@ -113,25 +113,21 @@ export default class MovieInformation extends Component {
           <div style={{width: 'fit-content', height: 'fit-content'}}>
             <CoverImage src={Poster} alt={Title} />
           </div>
+          
           <div className={styles.details}>
-            <div className={styles.genreWrapper}>
-              {genreList}
+            <div> {/* Text div; wrapper separates user-select from visual accent. */}
+              <div className={styles.genreWrapper}>
+                {genreList}
+              </div>
+              <p className={styles.directors}>{Director}</p>
+              <p className={styles.writers}>{Writer}</p>
+              <p className={styles.plot}>{Plot}</p>
+              <div className={styles.languageWrapper}>
+                {languageList}
+              </div>
             </div>
-            <p className={styles.directors}>{Director}</p>
-            <p className={styles.writers}>{Writer}</p>
-            <p className={styles.plot}>{Plot}</p>
-            <div className={styles.languageWrapper}>
-              {languageList}
-            </div>
 
-            {/* TODO Add cosmetic effect here? In ::after it affects user select. */}
-            {/* details div doesn't set width and height, though, which makes
-                positional underlay adjustements massively fucking irritating. */}
-
-            {/* Anyway, we're more or less done after I add some kind of backend
-                upvoting system.
-
-                Oh, and clean up console warnings. */}
+            <div className={styles.detailsAccent} />
           </div>
         </div>
 

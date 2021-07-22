@@ -17,24 +17,6 @@
   opacity: 1;
 }
 
-.titleInfo {
-  position: relative;
-}
-
-.title {
-  display: block;
-
-  font-size: 2rem;
-  line-height: 2.3rem;
-  margin: 0 1rem 1rem 0;
-}
-
-.cursoryInfo {
-  font-size: 1rem;
-  line-height: 0.8rem;
-  margin-bottom: 1rem;
-}
-
 .titleDetails {
   display: flex;
   align-items: flex-start;
@@ -51,7 +33,7 @@
   transform-style: preserve-3d;
 }
 
-.details:after {
+.detailsAccent {
   content: '';
 
   position: absolute;
@@ -82,9 +64,6 @@
 }
 
 .language {
-  // font-size: 1rem;
   width: fit-content;
-  // padding: .2rem .4rem;
   margin-right: .7rem;
-  // border: .08rem solid colors.get(text, light);
 }
