@@ -21,7 +21,7 @@ export default class MovieInformation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imdbID: '',
+      imdbID: window.location.search.slice(4),
       Poster: null,
       Title: '[title]',
       Year: '',
@@ -39,8 +39,7 @@ export default class MovieInformation extends Component {
   }
 
   componentDidMount() {
-    const id = window.location.search.slice(4);
-    this.requestTitleDetails(id);
+    this.requestTitleDetails(this.state.imdbID);
   }
 
   componentWillUnmount() {
