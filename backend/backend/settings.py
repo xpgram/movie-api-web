@@ -15,6 +15,7 @@ from pathlib import Path
 
 import django_heroku
 from dotenv import load_dotenv
+import dj_database_url
 
 # Build paths inside the project like this: BACKEND_DIR / 'subdir'.
 BACKEND_DIR = Path(__file__).resolve().parent.parent
@@ -89,12 +90,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BACKEND_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
@@ -151,3 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
+
+# Fix sqlite sslmode rejection
+options = DATABASES['default'].get('OPTIONS', {})
+options.pop('sslmode', None)
