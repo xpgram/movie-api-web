@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+from pathlib import Path
+
 import django_heroku
 from dotenv import load_dotenv
-from pathlib import Path
 
 # Build paths inside the project like this: BACKEND_DIR / 'subdir'.
 BACKEND_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,9 @@ BASE_DIR = BACKEND_DIR.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-load_dotenv('.env.local')
+dotenv_file = os.path.join(BASE_DIR, '.env.local')
+if os.path.isfile(dotenv_file):
+    load_dotenv(dotenv_file)
 SECRET_KEY = str(os.getenv('SECRET_KEY', 'Secret key not found.'))
 
 # SECURITY WARNING: don't run with debug turned on in production!

@@ -26,7 +26,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('search', index, name='index'),
     path('movie', index, name='index'),
-    
+
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
 ]
