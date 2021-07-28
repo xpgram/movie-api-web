@@ -38,7 +38,7 @@ export class UpvoteButtonWidget extends Component {
       });
     } catch (err) {
       if (err.response.status !== 404)
-        console.warn(err);
+        console.warn(err, err.response);
     }
     this.setState({interactable: true});
   }
