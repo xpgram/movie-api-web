@@ -10,7 +10,7 @@ axios.defaults.xsrfHeaderName = "HTTP_X_CSRFTOKEN";
 
 // This is required because my proxy isn't working for some reason. It does, but it doesn't.
 // I keep getting 403's from :3000; it shouldn't even be *accessing* :3000.
-const url = "http://localhost:8000";
+const url = ""; // "http://localhost:8000";
 
 // TODO Set api-url as an env variable, maybe. I obviously can't request from localhost on Heroku.
 
