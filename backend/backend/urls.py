@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework import routers
 from MovieWeb import views
 from .views import index
+from .settings import DEBUG
 
 router = routers.DefaultRouter()
 router.register(r'MovieWeb', views.MovieWebView, 'MovieWeb')
@@ -26,7 +27,11 @@ urlpatterns = [
     path('', index, name='index'),
     path('search', index, name='index'),
     path('movie', index, name='index'),
-
-    path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
 ]
+
+# Prevent the serving of special pages in production; don't expose admin to public
+if DEBUG:
+    urlpatterns.extend([
+        path('admin/', admin.site.urls),
+    ])

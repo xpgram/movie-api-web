@@ -34,7 +34,11 @@ SECRET_KEY = str(os.getenv('SECRET_KEY', 'Secret key not found.'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'xpg-movie-api-web.herokuapp.com',
+    '127.0.0.1:8000',
+    'localhost',
+]
 
 
 # Application definition
@@ -135,8 +139,10 @@ django_heroku.settings(locals())
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')
-STATICFILES_DIRS = []
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'build', 'static')
+]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
