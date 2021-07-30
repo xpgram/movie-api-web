@@ -10,6 +10,7 @@ django-cors-headers = "*"
 whitenoise = "*"
 django-heroku = "*"
 gunicorn = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.8"
