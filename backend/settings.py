@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+import mimetypes
+
 import django_heroku
 from dotenv import load_dotenv
 import dj_database_url
@@ -157,3 +159,6 @@ CORS_ORIGIN_WHITELIST = [
 # Fix sqlite sslmode rejection
 options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode', None)
+
+# Fix css mime/type issue
+mimetypes.add_type("text/css", ".css", True)
