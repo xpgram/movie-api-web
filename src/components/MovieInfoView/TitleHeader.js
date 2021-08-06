@@ -1,8 +1,8 @@
 import { Component } from "react";
-import { UpvoteButtonWidget } from "../UpvoteButtonWidget";
 import IMDbRatingWidget from "../IMDbRatingWidget";
 
 import styles from './TitleHeader.module.scss';
+import { VoteWidget } from "../VoteWidget";
 
 export class TitleHeader extends Component {
   render() {
@@ -18,7 +18,7 @@ export class TitleHeader extends Component {
           </div>
         </div>
         <div className={styles.rightPanel}>
-          <UpvoteButtonWidget className={styles.upButton} movieId={this.props.movieId} />
+          <VoteWidget className={styles.voteButton} movieId={this.props.movieId} />
           <IMDbRatingWidget className={styles.imdb} rating={this.props.rating} votes={this.props.votes} />
         </div>
       </div>

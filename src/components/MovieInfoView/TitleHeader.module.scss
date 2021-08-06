@@ -47,14 +47,16 @@
   }
 }
 
-// TODO Remove; implement over the poster component.
-.upButton {
-  width: 3rem;
-  margin: 0 1rem;
-}
-
 .rightPanel {
   display: flex;
   align-items: center;
   height: fit-content;
+}
+
+.voteButton {
+  margin-right: .8rem;
+}
+
+.imdb {
+  margin-right: -.5rem;
 }

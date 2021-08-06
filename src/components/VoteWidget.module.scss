@@ -1,0 +1,52 @@
+@use 'sass:color' as sass-color;
+@use '../styles/colors';
+
+$color: colors.get(accent);
+$size: 2.8rem;
+$anim-time: .1s;
+
+.default {
+  width: $size * 2;
+}
+
+.voteCount {
+  width: 100%;
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+@mixin button {
+  $zoom: scale(1.12);
+  $zoom-active: scale(1.04);
+
+  width: $size;
+  stroke-width: $size;
+  stroke: $color;
+  filter: drop-shadow(0rem .3rem .1rem #0006);
+
+  transition: transform $anim-time ease, fill $anim-time ease;
+  user-select: none;
+
+  &:hover {
+    transform: $zoom;
+  }
+
+  &:active {
+    transform: $zoom-active;
+  }
+}
+
+.inactive {
+  @include button;
+
+  fill: #0000;
+  &:hover {
+    fill: #FFF1;
+  }
+}
+
+.active {
+  @include button;
+
+  fill: $color;
+}
