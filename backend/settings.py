@@ -33,8 +33,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = str(os.getenv('SECRET_KEY', 'Secret key not found.'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = str(os.getenv('BUILD_MODE', 'production')) == 'development'
-DEBUG = True
+DEBUG = str(os.getenv('BUILD_MODE', 'production')) == 'development'
  
 ALLOWED_HOSTS = [
     'xpg-movie-api-web.herokuapp.com',

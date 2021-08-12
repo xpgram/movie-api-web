@@ -58,12 +58,15 @@ export class VoteWidget extends Component {
   
   click = async (event) => {
     if (!this.state.interactable) {
+      console.log(`not interactable`)
       return;
     }
 
+    // TODO getAttribute does not work. As is.
     // Is this incomplete? this[event.target.name], what does this do?
-    const voteDirection = event.target.getAttribute('vote-direction');
+    const voteDirection = event.target.getAttribute('voteDirection');
     const voteDirNumeral = (voteDirection === 'up') ? VoteStatus.Upvote : VoteStatus.Downvote;
+    console.log(`dir=${voteDirNumeral} str=${voteDirection}`)
 
     const oldStatus = this.state.voteStatus;
     const newStatus = (this.state.voteStatus === voteDirNumeral) ? VoteStatus.Neutral : voteDirNumeral;
@@ -87,16 +90,16 @@ export class VoteWidget extends Component {
     const render = (
       <div className={`${styles.default} ${this.props.className}`}>
         <IStar  //IUpArrow
-          className={ (this.state.voteStatus == VoteStatus.Upvote) ? styles.active : styles.inactive }
+          className={ (this.state.voteStatus === VoteStatus.Upvote) ? styles.active : styles.inactive }
           onClick={this.click}
-          vote-direction='up'
+          voteDirection='up'
         />
         <IStar  //IDownArrow
-          className={ (this.state.voteStatus == VoteStatus.Downvote) ? styles.active : styles.inactive }
+          className={ (this.state.voteStatus === VoteStatus.Downvote) ? styles.active : styles.inactive }
           onClick={this.click}
-          vote-direction='down'
+          voteDirection='down'
         />
-        <div className={styles.voteCount}>201</div>
+        <div className={styles.voteCount}>{this.state.upvoteValue - this.state.downvoteValue}</div>
       </div>
     );
 

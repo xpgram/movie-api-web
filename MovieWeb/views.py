@@ -27,11 +27,29 @@ class VoteView (viewsets.ModelViewSet):
   # Do I import Create/Update-ModelMixin and apply it somehow?
   # Or do I just override .create()/.update()?
 
-  def put(self, request, movieId):
-    movie = get_object_or_404(Vote, pk = movieId)
+  def post(self, request):
+    movie = Vote()
+    vote = request.POST['vote']
+    
+    movie.upvotes += 1 * (vote > 0)
+    movie.downvotes += 1 * (vote < 0)
+    movie.save()
 
     return HttpResponse()
 
+  def update(self, request, pk):
+    movie = get_object_or_404(Vote, pk=pk)
+    data = request.data
+    vote = request.data.get('vote')
+
+    print(f'PUT: {vote} from {data} into {pk}')
+
+    if vote != None:
+      movie.upvotes += 1 * (vote > 0)
+      movie.downvotes += 1 * (vote < 0)
+      movie.save()
+
+    return HttpResponse()
 
 
 
