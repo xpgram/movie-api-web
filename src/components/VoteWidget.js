@@ -1,6 +1,6 @@
 import { Component } from "react";
 import axios from "axios";
-import { IStar } from './Icons';
+import { IArrowUp, IArrowDown } from './Icons';
 
 import styles from './VoteWidget.module.scss';
 
@@ -95,12 +95,12 @@ export class VoteWidget extends Component {
   render() {
     const render = (
       <div className={`${styles.default} ${this.props.className}`}>
-        <IStar
-          className={ (this.state.voteStatus === VoteStatus.Upvote) ? styles.active : styles.inactive }
+        <IArrowUp
+          className={`${styles.upvote} ${(this.state.voteStatus === VoteStatus.Upvote) ? styles.active : styles.inactive}`}
           onClick={this.upvote}
         />
-        <IStar
-          className={ (this.state.voteStatus === VoteStatus.Downvote) ? styles.active : styles.inactive }
+        <IArrowDown
+          className={`${styles.downvote} ${(this.state.voteStatus === VoteStatus.Downvote) ? styles.active : styles.inactive}`}
           onClick={this.downvote}
         />
         <div className={styles.voteCount}>{this.state.upvoteValue - this.state.downvoteValue}</div>

@@ -16,5 +16,13 @@ export class ICross extends IconGeneric {
 }
 
 export class IStar extends IconGeneric {
-  shape = <svg viewBox="0 0 1600 1200" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2"><path d="M752.383 27.166A55.314 55.314 0 01800 0a55.314 55.314 0 0147.617 27.166l165.35 279.71 317.116 70.821a55.32 55.32 0 0140.55 36.893 55.31 55.31 0 01-11.121 53.68l-214.924 243.694 30.639 323.482a55.313 55.313 0 01-22.557 49.965 55.306 55.306 0 01-54.49 6.01L800 962.321l-298.18 129.1a55.306 55.306 0 01-54.49-6.01 55.313 55.313 0 01-22.557-49.965l30.64-323.482L240.487 468.27a55.31 55.31 0 01-11.122-53.68 55.32 55.32 0 0140.551-36.893l317.116-70.82 165.35-279.711z"/></svg>;
+  shape = <svg viewBox="0 0 1200 1100" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2"><path d="M571.57 113.35a31.048 31.048 0 0156.86 0l115.139 262.289a25.092 25.092 0 0020.482 14.88l285.027 28.453a31.048 31.048 0 0126.448 21.3 31.06 31.06 0 01-8.869 32.776L852.782 663.605a25.093 25.093 0 00-7.824 24.078l61.02 279.872a31.047 31.047 0 01-12.085 31.732 31.057 31.057 0 01-33.914 1.695L612.659 856.46a25.088 25.088 0 00-25.318 0l-247.32 144.523a31.057 31.057 0 01-33.914-1.695 31.047 31.047 0 01-12.085-31.732l61.02-279.872a25.094 25.094 0 00-7.825-24.078L133.346 473.048a31.048 31.048 0 0117.57-54.076l285.032-28.452a25.099 25.099 0 0020.482-14.881l115.14-262.29z"/></svg>
+}
+
+export class IArrowUp extends IconGeneric {
+  shape = <svg viewBox="0 0 1150 1200" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2"><path d="M742.01 1099.995H407.99V643.437H125L575 99.992l450 543.445H742.01v456.558z"/></svg>
+}
+
+export class IArrowDown extends IconGeneric {
+  shape = <svg viewBox="0 0 1150 1200" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2"><path d="M407.99 100.002h334.02V556.56H1025l-450 543.445L125 556.56h282.99V100.002z"/></svg>
 }

@@ -1,8 +1,9 @@
 @use 'sass:color' as sass-color;
 @use '../styles/colors';
 
-$color: colors.get(accent);
-$size: 2.8rem;
+$color-positive: colors.get(actions, positive);
+$color-negative: colors.get(actions, negative);
+$size: 2rem;
 $anim-time: .1s;
 
 .default {
@@ -16,13 +17,12 @@ $anim-time: .1s;
   user-select: none;
 }
 
-@mixin button {
+@mixin button($color) {
   $zoom: scale(1.12);
-  $zoom-active: scale(1.04);
+  $zoom-active: scale(1.06);
 
   width: $size;
-  stroke-width: $size;
-  stroke: $color;
+  fill: $color;
   filter: drop-shadow(0rem .3rem .1rem #0006);
 
   transition: transform $anim-time ease, fill $anim-time ease;
@@ -37,17 +37,21 @@ $anim-time: .1s;
   }
 }
 
-.inactive {
-  @include button;
+.upvote {
+  @include button($color-positive);
+}
 
-  fill: #0000;
-  &:hover {
-    fill: #FFF1;
-  }
+.downvote {
+  @include button($color-negative);
 }
 
 .active {
-  @include button;
+  opacity: 1;
+}
 
-  fill: $color;
+.inactive {
+  opacity: .4;
+  &:hover {
+    opacity: .6;
+  }
 }
