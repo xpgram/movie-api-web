@@ -5,7 +5,10 @@ and some amount of backend competency.
 
 Have a look at these fine pages:
 
-...
+<span float="left">
+  <img src="github-show/search-page.png" alt="search page" width="49%" />
+  <img src="github-show/detail-page.png" alt="details page" width="49%" />
+</span>
 
 The site was not designed with mobile in mind, but I am working on that.
 
@@ -36,10 +39,16 @@ pipenv shell;
 pipenv install -r requirements.txt;
 py manage.py makemigrations;
 py manage.py migrate;
+```
 
-# Start
+### Running
+
+Once setup is complete, you can run the server from its directory like so:
+
+```powershell
+pipenv shell;   # If you haven't already; if you just installed, you have.
 py manage.py runserver;
 ```
 
-In any case, the server should be running. You can tap into it by navigating to
+The server should be running now. You can tap into it by navigating to
 [http://localhost:8000](http://localhost:8000) in your browser.
