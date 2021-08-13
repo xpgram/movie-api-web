@@ -1,7 +1,7 @@
 # Movie-Api-Web
 
 This is a portfolio project meant to demonstrate graphic/web design, external API integration,
-and some amount of backend competency.
+and some amount of backend competency. It was built with React and Django.
 
 Have a look at these fine pages:
 
