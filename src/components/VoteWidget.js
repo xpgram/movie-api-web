@@ -9,9 +9,11 @@ axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "HTTP_X_CSRFTOKEN";
 
 const VoteStatus = {
-  Neutral: 0,
-  Upvoted: 1,
-  Downvoted: -1,
+  Neutral: 'neutral',
+  Upvote: 'up',
+  Downvote: 'down',
+  CancelUpvote: 'cancel-up',
+  CancelDownvote: 'cancel-down',
 }
 
 export class VoteWidget extends Component {
@@ -33,7 +35,7 @@ export class VoteWidget extends Component {
 
   getVoteCount = async () => {
     try {
-      const res = await axios.get(`/api/votes/${this.props.movieId}/`);
+      const res = await axios.get(`/api/lookup/${this.props.movieId}/`);
       this.setState({
         upvoteValue: res.data['upvotes'],
         downvoteValue: res.data['downvotes'],
@@ -49,27 +51,23 @@ export class VoteWidget extends Component {
   updateDbListing = async (value) => {
     const item = {movieId: this.props.movieId, vote: value};
     if (this.state.fixedReference)
-      await axios.put(`/api/votes/${item.movieId}/`, item);
+      await axios.put(`/api/vote/${item.movieId}/`, item);
     else {
-      await axios.post(`/api/votes/`, item);
+      await axios.post(`/api/vote/`, item);
       this.setState({fixedReference: true});
     }
   }
   
-  click = async (event) => {
+  click = async (voteValue) => {
     if (!this.state.interactable) {
       console.log(`not interactable`)
       return;
     }
 
-    // TODO getAttribute does not work. As is.
-    // Is this incomplete? this[event.target.name], what does this do?
-    const voteDirection = event.target.getAttribute('voteDirection');
-    const voteDirNumeral = (voteDirection === 'up') ? VoteStatus.Upvote : VoteStatus.Downvote;
-    console.log(`dir=${voteDirNumeral} str=${voteDirection}`)
+    const cancelValue = (voteValue === VoteStatus.Upvote) ? VoteStatus.CancelUpvote : VoteStatus.CancelDownvote;
 
     const oldStatus = this.state.voteStatus;
-    const newStatus = (this.state.voteStatus === voteDirNumeral) ? VoteStatus.Neutral : voteDirNumeral;
+    const newStatus = (this.state.voteStatus === voteValue) ? VoteStatus.Neutral : voteValue;
 
     this.setState({
       voteStatus: newStatus,
@@ -77,27 +75,33 @@ export class VoteWidget extends Component {
     });
 
     try {
-      await this.updateDbListing(newStatus);
+      await this.updateDbListing( (newStatus === voteValue) ? voteValue : cancelValue );
     } catch (err) {
       console.log(err, err.response);
       this.setState({voteStatus: oldStatus});
     }
 
-    this.setState({interactable: true});
+    this.getVoteCount();
+  }
+
+  upvote = () => {
+    this.click(VoteStatus.Upvote);
+  }
+
+  downvote = () => {
+    this.click(VoteStatus.Downvote);
   }
   
   render() {
     const render = (
       <div className={`${styles.default} ${this.props.className}`}>
-        <IStar  //IUpArrow
+        <IStar
           className={ (this.state.voteStatus === VoteStatus.Upvote) ? styles.active : styles.inactive }
-          onClick={this.click}
-          voteDirection='up'
+          onClick={this.upvote}
         />
-        <IStar  //IDownArrow
+        <IStar
           className={ (this.state.voteStatus === VoteStatus.Downvote) ? styles.active : styles.inactive }
-          onClick={this.click}
-          voteDirection='down'
+          onClick={this.downvote}
         />
         <div className={styles.voteCount}>{this.state.upvoteValue - this.state.downvoteValue}</div>
       </div>

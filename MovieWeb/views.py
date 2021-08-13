@@ -1,55 +1,86 @@
 from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets
-from .serializers import MovieWebSerializer, VoteSerializer
+from .serializers import MovieWebSerializer, LookupSerializer, VoteSerializer
 from .models import MovieWeb, Vote
 from django.views import View
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotAllowed, HttpResponseNotFound
 import os
 
 # Create your views here.
 
 class MovieWebView (viewsets.ModelViewSet):
+  '''
+  Deprecated; used for setting favorite titles.
+  '''
   serializer_class = MovieWebSerializer
   queryset = MovieWeb.objects.all()
 
-# movie/tt328392 => {movieId: tt3242352, votes: 2343}
-# vote/tt328392 (post/put only) => {movieId: tt328392, vote: +1 | 0 | -1}
 
-class VoteView (viewsets.ModelViewSet):
-  serializer_class = VoteSerializer
+class LookupView (viewsets.ModelViewSet):
+  '''
+  Used to lookup vote-count results.
+  '''
+  serializer_class = LookupSerializer
   queryset = Vote.objects.all()
 
-  # what I want is a mixin, pretty sure.
-  # I want to require that request data vote is only of [1, 0, -1] and that this
-  # increments either vote count or neither. Default behavior would be to *set*
-  # the up/downvote count to something, which I don't want.
+  def create(self, request):
+    return HttpResponseNotAllowed()
 
-  # Do I import Create/Update-ModelMixin and apply it somehow?
-  # Or do I just override .create()/.update()?
+  # read() is fine
 
-  def post(self, request):
+  def update(self, request):
+    return HttpResponseNotAllowed()
+
+  def delete(self, request):
+    return HttpResponseNotAllowed()
+
+
+class VoteView (viewsets.ModelViewSet):
+  '''
+  Used to cast votes on titles.
+  '''
+  serializer_class = VoteSerializer   # TODO Vote does not use the Vote Model. Why use its serializer?
+  queryset = Vote.objects.all()       # Is it for this? What does a serializer do, actually?
+
+  def recordVote(self, object, vote):
+    '''
+    Returns HttpResponse if vote was successfully applied to object,
+    else BadRequest for incorrect fields.
+    '''
+    switcher = {
+      'up': (1, 0),
+      'down': (0, 1),
+      'cancel-up': (-1, 0),
+      'cancel-down': (0, -1),
+    }
+
+    if vote in switcher:
+      valuePair = switcher.get(vote)
+      object.upvotes += valuePair[0]
+      object.downvotes += valuePair[1]
+      object.save()
+      return HttpResponse()
+    else:
+      return HttpResponseBadRequest('Vote request invalid')
+
+  def create(self, request):
     movie = Vote()
-    vote = request.POST['vote']
-    
-    movie.upvotes += 1 * (vote > 0)
-    movie.downvotes += 1 * (vote < 0)
-    movie.save()
+    movie.movieId = request.data.get('movieId')
+    vote = request.data.get('vote')
+    return self.recordVote(movie, vote)
 
-    return HttpResponse()
+  def read(self, request):
+    "Returns HttpResponse with this view's expected input."
+    print(f"Read {request.data.get('movieId')}")
+    return HttpResponse(200, {'movieId': 'tt000000', 'vote': 'up down cancel-up cancel-down'})
 
   def update(self, request, pk):
     movie = get_object_or_404(Vote, pk=pk)
-    data = request.data
     vote = request.data.get('vote')
+    return self.recordVote(movie, vote)
 
-    print(f'PUT: {vote} from {data} into {pk}')
-
-    if vote != None:
-      movie.upvotes += 1 * (vote > 0)
-      movie.downvotes += 1 * (vote < 0)
-      movie.save()
-
-    return HttpResponse()
+  def delete(self, request):
+    return HttpResponseNotAllowed()
 
 
 

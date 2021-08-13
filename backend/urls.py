@@ -22,7 +22,8 @@ from .settings import DEBUG
 
 router = routers.DefaultRouter()
 router.register(r'MovieWeb', views.MovieWebView, 'MovieWeb')
-router.register(r'votes', views.VoteView, 'votes')
+router.register(r'lookup', views.LookupView, 'lookup')
+router.register(r'vote', views.VoteView, 'vote')
 
 urlpatterns = [
     path('', index, name='index'),

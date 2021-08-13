@@ -13,6 +13,7 @@ $anim-time: .1s;
   width: 100%;
   font-size: 1.15rem;
   text-align: center;
+  user-select: none;
 }
 
 @mixin button {
