@@ -13,8 +13,7 @@ Have a look at these fine pages:
 The site was not designed with mobile in mind, but I am working on that.
 
 ## Running the Project
-
-[!] You can alternatively click [here](https://xpg-movie-api-web.herokuapp.com) to see
+🔻 You can alternatively click [here](https://xpg-movie-api-web.herokuapp.com) to see
 the official build on a public server. It *will* take a minute for Heroku to wake up the
 server dyno before it serves you the page.
 
@@ -23,7 +22,7 @@ server dyno before it serves you the page.
 You will need the python3 version of pipenv if you don't have it. And npm.  
 `pip3 install pipenv`
 
-With that settled, open a powershell in the directory of the project and run these in order:
+Open a powershell in the directory of the project and run these in order:
 
 ```powershell
 # Build React project
@@ -46,9 +45,8 @@ py manage.py migrate;
 Once setup is complete, you can run the server from its directory like so:
 
 ```powershell
-pipenv shell;   # If you haven't already; if you just installed, you have.
+pipenv shell;             # Only if you haven't already.
 py manage.py runserver;
 ```
 
-The server should be running now. You can tap into it by navigating to
-[http://localhost:8000](http://localhost:8000) in your browser.
+You can tap into it by navigating to [http://localhost:8000](http://localhost:8000) in your browser.
