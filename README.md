@@ -10,7 +10,7 @@ Have a look at these fine pages:
   <img src="github-show/detail-page.png" alt="details page" width="49%" />
 </span>
 
-The site was not designed with mobile in mind, but I am working on that.
+The site was not designed with mobile in mind, but I am working on that. [Well, I was.]
 
 ## Running the Project
 🔻 You can alternatively click [here](https://xpg-movie-api-web.herokuapp.com) to see
